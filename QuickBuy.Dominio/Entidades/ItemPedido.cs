@@ -1,18 +1,21 @@
-﻿using System.Collections.Generic;
-
-namespace QuickBuy.Dominio.Entidades
+﻿namespace QuickBuy.Dominio.Entidades
 {
-    public class ItemPedido
+    public class ItemPedido : Entidade
     {
         public int Id { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public string Nome { get; set; }
-        public string SobreNome { get; set; }
+        public int ProditoId { get; set; }
+        public int Quantidade { get; set; }
 
-        /// <summary>
-        /// Um Ususario pode ter nenhum ou muitos pedidos
-        /// </summary>
-        public ICollection<Pedido> Pedidos { get; set; }
+        public override void Validate()
+        {
+            if (ProditoId == 0)
+            {
+                AdicionarCritica("Não foi identificado a referência do produto");
+            }
+            if (Quantidade == 0)
+            {
+                AdicionarCritica("Não foi informada a quantidade");
+            }
+        }
     }
 }
