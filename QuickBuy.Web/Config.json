@@ -2,6 +2,6 @@
     //"Chave": "ValorChave"
     "ConnectionStrings": {
         "SqlServerConnection": "",
-        "QuickBuyDB": "server=localhost;uid=root;pwd=123;database=QuickBuyDB"
+        "QuickBuyDB": "server=localhost;uid=root;pwd=1234;database=QuickBuyDB"
     }
 }
