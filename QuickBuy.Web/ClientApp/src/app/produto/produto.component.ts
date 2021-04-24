@@ -1,8 +1,8 @@
-import { Component } from "@angular/core"
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "app-produto",
-  template: "<html><body>{{ obterNome() }}</body></html>"
+  selector: 'app-produto',
+  template: '<html><body>{{ obterNome() }}</body></html>'
 })
 
 export class ProdutoComponent { // Nome de classe começa com maíusculo.
