@@ -17,7 +17,7 @@
            required/>
     <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched)">
       <div *ngIf="email.errors.required">
-        O campo email deve ser preenchido
+        *O campo email deve ser preenchido
       </div>
       <div *ngIf="email.errors.email">
         *Email no formato inválido
@@ -38,11 +38,14 @@
            />
     <div class="invalid-feedback mb-2" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
       <div *ngIf="senha.errors.required">
-        A senha deve ser informada
+        *A senha deve ser informada
       </div>
     </div>
 
-    <button class="btn btn-primary btn-block mb-2" type="submit" (click)="entrar()">Entrar</button>
+    <button class="btn btn-primary btn-block mb-2" type="submit" (click)="entrar()" [disabled]="ativarSpinner">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
+      Entrar
+    </button>
     <div class="alert alert-danger" *ngIf="mensagem">
       {{mensagem}}
     </div>
