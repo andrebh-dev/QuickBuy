@@ -80,15 +80,15 @@
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
         Cadastrar
       </button>
-      <div><a [routerLink]='["/entrar"]'>Voltar</a></div>
 
       <div class="alert alert-danger" *ngIf="mensagem">
         {{mensagem}}
       </div>
-      <div class="alert alert-seccess" *ngIf="usuariocadastrado">
+      <div class="alert alert-success" *ngIf="usuarioCadastrado">
         Usuário cadastrado com sucesso! <a class="alert-link" [routerLink]='["/entrar"]'>Clique aqui</a> para entrar no sistema com a sua conta.
       </div>
+      <div><a [routerLink]='["/entrar"]'>Voltar</a></div>
+
       <img src="../../../assets/img/logo.png" />
     </form>
   </div>
-  
