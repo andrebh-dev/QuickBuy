@@ -10,6 +10,7 @@ import { ProdutoServico } from '../servicos/produto/produto.servico';
 
 export class ProdutoComponent implements OnInit {
   public produto: Produto;
+  public arquivoSelecionado: File;
 
   constructor(private produtoServico: ProdutoServico) {
 
@@ -18,15 +19,27 @@ export class ProdutoComponent implements OnInit {
     this.produto = new Produto();
   }
 
-  public cadastrar() {
-/*     this.produtoServico.cadastrar(this.produto).subscribe(
-      (produtoJson) => {
-        console.log(produtoJson);
+  public inputChange(files: FileList) {
+    this.arquivoSelecionado = files.item(0);    
+    this.produtoServico.enviarArquivo(this.arquivoSelecionado).subscribe(
+      (retorno) => {
+        console.log(retorno);
       },
       (e) => {
         console.log(e.error);
       }
-    ); */
+    );
+  }
+
+  public cadastrar() {
+    //    this.produtoServico.cadastrar(this.produto).subscribe(
+    //   (produtoJson) => {
+    //     console.log(produtoJson);
+    //   },
+    //   (e) => {
+    //     console.log(e.error);
+    //   }
+    // ); 
   }
 
 }
