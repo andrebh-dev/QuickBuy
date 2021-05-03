@@ -38,14 +38,26 @@ export class ProdutoComponent implements OnInit {
   }
 
   public cadastrar() {
-    //    this.produtoServico.cadastrar(this.produto).subscribe(
-    //   (produtoJson) => {
-    //     console.log(produtoJson);
-    //   },
-    //   (e) => {
-    //     console.log(e.error);
-    //   }
-    // ); 
+    this.ativarEspera();
+    this.produtoServico.cadastrar(this.produto).subscribe(
+      (produtoJson) => {
+        console.log(produtoJson);
+        this.desativarEspera();
+      },
+      (e) => {
+        console.log(e.error);
+        this.mensagem = e.error;
+        this.desativarEspera();
+      }
+    ); 
+  }
+
+  public ativarEspera(){
+    this.ativarSpinner = true;
+  }
+
+  public desativarEspera(){
+    this.ativarSpinner = false;
   }
 
 }

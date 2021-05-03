@@ -24,7 +24,7 @@ export class ProdutoServico implements OnInit{
     }
 
     public cadastrar(produto: Produto): Observable<Produto>{
-        return this.http.post<Produto>(this._baseUrl + "api/produto/cadastrar", JSON.stringify(produto), { headers: this.headers});
+        return this.http.post<Produto>(this._baseUrl + "api/produto", JSON.stringify(produto), { headers: this.headers});
     }
 
     public salvar(produto: Produto): Observable<Produto>{
@@ -48,7 +48,7 @@ export class ProdutoServico implements OnInit{
     public enviarArquivo(arquivoSelecionado: File): Observable<string> {
         const formData: FormData = new FormData();
         formData.append("arquivoEnviado", arquivoSelecionado, arquivoSelecionado.name);
-        return this.http.post<string>(this._baseUrl + "api/produto/enviarArquivo", formData);
+      return this.http.post<string>(this._baseUrl + "api/produto/enviarArquivo", formData);
       }
 
 }
