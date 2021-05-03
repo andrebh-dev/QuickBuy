@@ -12,6 +12,7 @@ export class ProdutoComponent implements OnInit {
   public produto: Produto;
   public arquivoSelecionado: File;
   public ativarSpinner: boolean;
+  public mensagem: string;
 
   constructor(private produtoServico: ProdutoServico) {
 
