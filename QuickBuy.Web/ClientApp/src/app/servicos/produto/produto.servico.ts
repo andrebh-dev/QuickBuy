@@ -32,8 +32,8 @@ export class ProdutoServico implements OnInit{
 
     }
 
-    public deletar(produto: Produto): Observable<Produto>{
-        return this.http.post<Produto>(this._baseUrl + "api/produto/deletar", JSON.stringify(produto), {headers: this.headers});
+    public deletar(produto: Produto): Observable<Produto[]>{
+        return this.http.post<Produto[]>(this._baseUrl + "api/produto/deletar", JSON.stringify(produto), {headers: this.headers});
 
     }
 
