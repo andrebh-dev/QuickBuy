@@ -5,7 +5,10 @@
       <div class="row mb-4" style="color:#555;"><h1 class="h4">{{produto.descricao}}</h1></div>
       <div class="row mb-4"><h1 class="h4">R$ {{produto.preco}}</h1></div>
       <div class="row mb-4">
-        <button class="btn btn-success btn-lg" (click)="comprar()">Comprar</button>
+        <div class="form-inline">
+          <button class="btn btn-primary btn-lg" style="margin-right: 5px;" (click)="comprar()">Comprar</button>
+          <button class="btn btn-secondary btn-lg" [routerLink]="['/']">Cancelar</button>
+        </div>
       </div>
     </div>
   </div>
