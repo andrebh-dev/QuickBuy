@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemPedido } from '../../modelo/itemPedido';
 import { Pedido } from '../../modelo/pedido';
 import { Produto } from '../../modelo/produto';
+import { PedidoServico } from '../../servicos/pedido/pedido.servico';
+import { UsuarioServico } from '../../servicos/usuario/usuario.servico';
 import { LojaCarrinhoCompras } from '../carrinho-compras/loja.carrinho.compras';
 
 @Component({
@@ -19,6 +22,10 @@ export class LojaEfetivarComponent implements OnInit {
     this.carrinhoCompras = new LojaCarrinhoCompras();
     this.produtos = this.carrinhoCompras.obterProdutos();
     this.atualizarTotal();
+  }
+
+  constructor(private usuarioServico: UsuarioServico, private pedidoServico: PedidoServico) {
+
   }
 
   public atualizarPreco(produto: Produto, quantidade: number) {
@@ -47,6 +54,35 @@ export class LojaEfetivarComponent implements OnInit {
 
   public efetivarCompra() {
     let pedido = new Pedido();
+
+
+  }
+
+  public criarPedido(): Pedido {
+    let pedido = new Pedido();
+    pedido.usuarioId = this.usuarioServico.usuario.id;
+    pedido.cep = "568145";
+    pedido.cidade = "Belo Horizonte";
+    pedido.estado = "Minas Gerais";
+    pedido.dataPrevisaoEntrega = new Date();
+    pedido.formaPagamentoId = 1;
+    pedido.numeroEndereco = "17";
+
+    this.produtos = this.carrinhoCompras.obterProdutos();
+
+    for (let produto of this.produtos) {
+      let itemPedido = new ItemPedido();
+      itemPedido.produtoId = produto.id;
+
+      if (!produto.quantidade) {
+        produto.quantidade = 1;
+        itemPedido.quantidade = produto.quantidade;
+
+        pedido.itensPedido.push(itemPedido);
+      }
+    }
+
+    return pedido;
   }
 
 }
