@@ -53,8 +53,15 @@ export class LojaEfetivarComponent implements OnInit {
   }
 
   public efetivarCompra() {
-    let pedido = new Pedido();
-
+    this.pedidoServico.efetivarCompra(this.criarPedido()).subscribe(
+      (pedidoId) => {
+        sessionStorage.setItem("pedidoId", Pedido.toString());
+        this.produtos = [];
+        this.carrinhoCompras.limparCarrinhoCompras();
+      },
+      (e) => {
+      }
+    );
 
   }
 
