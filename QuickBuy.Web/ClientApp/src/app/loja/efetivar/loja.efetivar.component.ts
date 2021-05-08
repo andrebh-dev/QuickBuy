@@ -57,7 +57,7 @@ export class LojaEfetivarComponent implements OnInit {
     this.pedidoServico.efetivarCompra(this.criarPedido()).subscribe(
       (pedidoId) => {
         console.log(pedidoId);
-        sessionStorage.setItem("pedidoId", Pedido.toString());
+        sessionStorage.setItem("pedidoId", pedidoId.toString());
         this.produtos = [];
         this.carrinhoCompras.limparCarrinhoCompras();
         this.router.navigate(["/compra-realizada-sucesso"]);
@@ -78,6 +78,7 @@ export class LojaEfetivarComponent implements OnInit {
     pedido.dataPrevisaoEntrega = new Date();
     pedido.formaPagamentoId = 1;
     pedido.numeroEndereco = "17";
+    pedido.enderecoCompleto = "Rua: Clementina Coelho, 17";
 
     this.produtos = this.carrinhoCompras.obterProdutos();
 
