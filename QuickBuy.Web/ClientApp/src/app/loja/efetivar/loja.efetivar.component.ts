@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ItemPedido } from '../../modelo/itemPedido';
 import { Pedido } from '../../modelo/pedido';
 import { Produto } from '../../modelo/produto';
@@ -24,7 +25,7 @@ export class LojaEfetivarComponent implements OnInit {
     this.atualizarTotal();
   }
 
-  constructor(private usuarioServico: UsuarioServico, private pedidoServico: PedidoServico) {
+  constructor(private usuarioServico: UsuarioServico, private pedidoServico: PedidoServico, private router: Router) {
 
   }
 
@@ -55,11 +56,14 @@ export class LojaEfetivarComponent implements OnInit {
   public efetivarCompra() {
     this.pedidoServico.efetivarCompra(this.criarPedido()).subscribe(
       (pedidoId) => {
+        console.log(pedidoId);
         sessionStorage.setItem("pedidoId", Pedido.toString());
         this.produtos = [];
         this.carrinhoCompras.limparCarrinhoCompras();
+        this.router.navigate(["/compra-realizada-sucesso"]);
       },
       (e) => {
+        console.log(e.error);
       }
     );
 
