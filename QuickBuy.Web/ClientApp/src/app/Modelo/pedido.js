@@ -4,7 +4,7 @@ exports.Pedido = void 0;
 var Pedido = /** @class */ (function () {
     function Pedido() {
         this.dataPedido = new Date();
-        this.itensPedido = [];
+        this.itensPedidos = [];
     }
     return Pedido;
 }());
